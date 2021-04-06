@@ -1,5 +1,6 @@
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/build/target/product/product_launched_with_j_mr2.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/kyleproxx/device_kyleproxx.mk)
