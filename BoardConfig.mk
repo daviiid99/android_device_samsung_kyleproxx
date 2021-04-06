@@ -1,5 +1,6 @@
 # Inherit from the proprietary version
 -include vendor/samsung/kyleproxx/BoardConfigVendor.mk
+DEVICE_PATH := device/samsung/kylepro
 
 # Platform
 TARGET_ARCH                                 := arm
@@ -22,22 +23,20 @@ TARGET_BOOTLOADER_BOARD_NAME                := hawaii
 TARGET_OTA_ASSERT_DEVICE                    := kyleprods,kylepro,S7582,S7580,GT-S7582,GT-S7580,hawaii
 
 # Kernel
-BOARD_MKBOOTIMG_ARGS                        := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-BOARD_KERNEL_BASE                           := 0x82000000
-BOARD_KERNEL_PAGESIZE                       := 4096
-BOARD_KERNEL_OFFSET                         := 0x00008000
-BOARD_RAMDISK_OFFSET                        := 0x01000000
-BOARD_KERNEL_TAGS_OFFSET                    := 0x00000100
-ifeq ($(BUILD_TWRP),true)
-    TARGET_KERNEL_CONFIG                    := bcm21664_hawaii_ss_kyleproxx_rev00_recovery_defconfig
-else
-    TARGET_KERNEL_CONFIG                    := bcm21664_hawaii_ss_kyleprods_rev00_lineage_defconfig
-endif
-TARGET_KERNEL_SOURCE                        := kernel/samsung/kyleproxx
-
-# Kernel toolchain
-KERNEL_TOOLCHAIN                            := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/bin
-KERNEL_TOOLCHAIN_PREFIX                     := arm-eabi-
+BOARD_KERNEL_CMDLINE := 
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage-dtb
+BOARD_KERNEL_BASE := 0x82000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+TARGET_KERNEL_ARCH := arm
+TARGET_KERNEL_HEADER_ARCH := arm
+TARGET_KERNEL_SOURCE := kernel/samsung/kylepro
+TARGET_KERNEL_CONFIG := kylepro_defconfig
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS              := device/samsung/kyleproxx/releasetools
