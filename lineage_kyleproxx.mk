@@ -199,6 +199,6 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bc
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_kyleproxx
+PRODUCT_NAME := lineage_kyleproxx
 PRODUCT_DEVICE := kyleproxx
 PRODUCT_MODEL := GT-S758x
