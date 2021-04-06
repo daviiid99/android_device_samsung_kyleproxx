@@ -1,6 +1,6 @@
 # Inherit from the proprietary version
 -include vendor/samsung/kyleproxx/BoardConfigVendor.mk
-DEVICE_PATH := device/samsung/kylepro
+DEVICE_PATH := device/samsung/kyleproxx
 
 # Platform
 TARGET_ARCH                                 := arm
